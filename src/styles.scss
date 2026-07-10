@@ -1,0 +1,126 @@
+/* === CUSTOM SIDEBAR === */
+
+.custom-sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: flex-start;
+  width: 100%;
+  padding-inline: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--lightgray);
+  box-sizing: border-box;
+
+  &-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  &-title {
+    font-family: var(--headerFont);
+    color: var(--dark);
+    font-size: 1.25rem;
+    margin: 0 0 0.25rem;
+  }
+
+  &-tagline {
+    font-family: var(--bodyFont);
+    color: var(--gray);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0 0 1rem;
+  }
+
+  &-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    a {
+      font-family: var(--bodyFont);
+      color: var(--darkgray);
+      font-size: 0.9rem;
+      text-decoration: none;
+      padding-block: 0.15rem;
+      transition: color 0.15s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--secondary);
+      }
+
+      &[aria-current="page"] {
+        color: var(--dark);
+        font-weight: 600;
+      }
+    }
+  }
+
+  &-socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--codeFont);
+
+    a {
+      color: var(--gray);
+      display: inline-flex;
+      transition: color 0.15s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--tertiary);
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+/* Tablet: sidebar narrows to a fixed rail, so keep type from wrapping awkwardly */
+@media (min-width: 800px) and (max-width: 1199px) {
+  .custom-sidebar {
+    &-title {
+      font-size: clamp(1rem, 1.1vw + 0.7rem, 1.25rem);
+    }
+
+    &-tagline {
+      font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.85rem);
+    }
+  }
+}
+
+/* Mobile: sidebar becomes a horizontal sticky top bar in custom.scss,
+   the full vertical identity block doesn't fit — hide it and rely on
+   the existing mobile hamburger/explorer drawer instead. */
+@media (max-width: 799px) {
+  .custom-sidebar {
+    display: none;
+  }
+}
+
+/* RTL: flip alignment so avatar/title/nav/socials read from the right.
+   No margin-left/padding-right is used above, so logical properties
+   already do most of the work — this just fixes the flex alignment axis. */
+[dir="rtl"] .custom-sidebar {
+  align-items: flex-end;
+  text-align: right;
+
+  &-nav {
+    align-items: flex-end;
+  }
+
+  &-socials {
+    flex-direction: row-reverse;
+  }
+}
