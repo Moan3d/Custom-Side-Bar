@@ -1,4 +1,4 @@
-/* === CUSTOM SIDEBAR === */
+/* === CUSTOM SIDEBAR (NileOverflow / Desolation Theme) === */
 
 .custom-sidebar {
   display: flex;
@@ -24,6 +24,13 @@
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--secondary);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    
+    // Desolation hover: shifts to "The Water" color and slightly scales
+    &:hover {
+      border-color: var(--tertiary);
+      transform: scale(1.05);
+    }
   }
 
   &-avatar-fallback {
@@ -33,6 +40,7 @@
     border: 2px solid var(--secondary);
     background: var(--lightgray);
     color: var(--dark);
+    display: flex; // FIX: Added missing flex display for alignment
     align-items: center;
     justify-content: center;
     font-family: var(--headerFont);
@@ -46,6 +54,7 @@
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0 0 0.35rem;
+    line-height: 1.2;
   }
 
   &-tagline {
@@ -73,12 +82,13 @@
       border-radius: 6px;
       border: 1px solid var(--lightgray);
       color: var(--darkgray);
-      transition: color 0.15s ease, border-color 0.15s ease;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 
       &:hover,
       &:focus-visible {
         color: var(--secondary);
         border-color: var(--secondary);
+        background: var(--highlight); // Desolation gold tint on hover
       }
     }
   }
@@ -94,7 +104,7 @@
       align-items: center;
       gap: 0.75rem;
       width: 100%;
-      padding: 0.5rem 0.25rem;
+      padding: 0.5rem 0.75rem;
       font-family: var(--bodyFont);
       color: var(--darkgray);
       font-size: 0.9rem;
@@ -111,6 +121,7 @@
       &[aria-current="page"] {
         color: var(--dark);
         font-weight: 600;
+        background: var(--highlight);
       }
     }
   }
@@ -122,6 +133,7 @@
   }
 }
 
+/* ── Tablet Adjustments ─────────────────────────────── */
 @media (min-width: 800px) and (max-width: 1199px) {
   .custom-sidebar {
     &-title {
@@ -133,14 +145,18 @@
   }
 }
 
+/* ── Mobile: Hide to preserve sticky top-bar ─────────── */
 @media (max-width: 799px) {
   .custom-sidebar {
     display: none;
   }
 }
 
+/* ── RTL / Arabic Adjustments ───────────────────────── */
 [dir="rtl"] .custom-sidebar {
   &-nav a {
     flex-direction: row-reverse;
+    text-align: right;
+    // Ensures the icon sits on the right (start in RTL) and text flows left
   }
 }

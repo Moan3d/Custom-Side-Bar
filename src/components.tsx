@@ -15,8 +15,8 @@ const defaultOptions: Options = {
   avatarSrc: "/static/avatar.png",
   navLinks: [
     { text: "Home", href: "/", icon: "home" },
-    { text: "Blog", href: "/blog", icon: "blog" },
-    { text: "Categories", href: "/categories", icon: "categories" },
+    { text: "Blog", href: "/blogs", icon: "blog" },         // Fixed: matches your actual /blogs folder
+    { text: "Categories", href: "/tags", icon: "categories" }, // Fixed: Quartz uses /tags for categories
     { text: "About", href: "/about", icon: "about" },
   ],
   socials: [
