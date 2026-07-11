@@ -4,6 +4,10 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components": "./dist/components.js"
+  },
   "scripts": {
     "build": "tsup"
   },
@@ -14,6 +18,9 @@
   },
   "quartz": {
     "category": ["component"],
+    "components": {
+      "CustomSidebar": {}
+    },
     "defaultOptions": {
       "siteTitle": "NileOverflow",
       "tagline": "Security, Cloud, and the Art of the Hack.",

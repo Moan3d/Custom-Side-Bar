@@ -13,7 +13,7 @@ const SINGLETON_EXTERNALS = [
 ]
 
 export default defineConfig({
-  entry: ["src/index.tsx"],
+  entry: ["src/index.tsx", "src/components.tsx"],
   format: ["esm"],
   dts: true,
   clean: true,
