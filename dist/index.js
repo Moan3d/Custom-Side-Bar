@@ -1,6 +1,6 @@
 import {
   CustomSidebar
-} from "./chunk-LGSVDWGQ.js";
+} from "./chunk-CMENUWKD.js";
 export {
   CustomSidebar,
   CustomSidebar as default

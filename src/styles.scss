@@ -11,6 +11,7 @@
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--lightgray);
   box-sizing: border-box;
+  order: -1; /* MAGIC FIX: Forces sidebar to the top, ignoring DOM order */
 }
 
 .custom-sidebar-avatar-wrap {
