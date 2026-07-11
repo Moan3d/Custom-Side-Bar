@@ -432,5 +432,6 @@ var CustomSidebar = (userOpts) => {
 };
 var index_default = CustomSidebar;
 export {
+  CustomSidebar,
   index_default as default
 };

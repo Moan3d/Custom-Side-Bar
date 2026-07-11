@@ -39,7 +39,7 @@ const icons: Record<string, string> = {
     '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.9 1.6h3.7l-8 9.2 9.5 12.6h-7.4l-5.8-7.6-6.6 7.6H.6l8.6-9.9L0 1.6h7.6l5.3 7 6-7Zm-1.3 19.5h2L6.5 3.8h-2l13.1 17.3Z"/></svg>',
 }
 
-const CustomSidebar: QuartzComponentConstructor<Options> = (userOpts?: Options) => {
+export const CustomSidebar: QuartzComponentConstructor<Options> = (userOpts?: Options) => {
   const opts: Options = { ...defaultOptions, ...userOpts }
 
   const Component: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {

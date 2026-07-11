@@ -28,4 +28,4 @@ interface Options {
 }
 declare const CustomSidebar: QuartzComponentConstructor<Options>;
 
-export { CustomSidebar as default };
+export { CustomSidebar, CustomSidebar as default };
