@@ -11,137 +11,134 @@
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--lightgray);
   box-sizing: border-box;
+}
 
-  &-avatar-wrap {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 0.75rem;
-  }
+.custom-sidebar-avatar-wrap {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.75rem;
+}
 
-  &-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--secondary);
-    transition: border-color 0.2s ease, transform 0.2s ease;
-    
-    // Desolation hover: shifts to "The Water" color and slightly scales
-    &:hover {
-      border-color: var(--tertiary);
-      transform: scale(1.05);
-    }
-  }
+.custom-sidebar-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--secondary);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
 
-  &-avatar-fallback {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--secondary);
-    background: var(--lightgray);
-    color: var(--dark);
-    display: flex; // FIX: Added missing flex display for alignment
-    align-items: center;
-    justify-content: center;
-    font-family: var(--headerFont);
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
+.custom-sidebar-avatar:hover {
+  border-color: var(--tertiary);
+  transform: scale(1.05);
+}
 
-  &-title {
-    font-family: var(--headerFont);
-    color: var(--dark);
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0 0 0.35rem;
-    line-height: 1.2;
-  }
+.custom-sidebar-avatar-fallback {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--secondary);
+  background: var(--lightgray);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--headerFont);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
 
-  &-tagline {
-    font-family: var(--bodyFont);
-    color: var(--gray);
-    font-size: 0.85rem;
-    line-height: 1.4;
-    margin: 0 0 1rem;
-    max-width: 220px;
-  }
+.custom-sidebar-title {
+  font-family: var(--headerFont);
+  color: var(--dark);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  line-height: 1.2;
+}
 
-  &-socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
+.custom-sidebar-tagline {
+  font-family: var(--bodyFont);
+  color: var(--gray);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+  max-width: 220px;
+}
 
-    a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      border: 1px solid var(--lightgray);
-      color: var(--darkgray);
-      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+.custom-sidebar-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
 
-      &:hover,
-      &:focus-visible {
-        color: var(--secondary);
-        border-color: var(--secondary);
-        background: var(--highlight); // Desolation gold tint on hover
-      }
-    }
-  }
+.custom-sidebar-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--lightgray);
+  color: var(--darkgray);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
 
-  &-nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.15rem;
+.custom-sidebar-socials a:hover,
+.custom-sidebar-socials a:focus-visible {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  background: var(--highlight);
+}
 
-    a {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      width: 100%;
-      padding: 0.5rem 0.75rem;
-      font-family: var(--bodyFont);
-      color: var(--darkgray);
-      font-size: 0.9rem;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background-color 0.15s ease, color 0.15s ease;
+.custom-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.15rem;
+}
 
-      &:hover,
-      &:focus-visible {
-        background: var(--lightgray);
-        color: var(--dark);
-      }
+.custom-sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--bodyFont);
+  color: var(--darkgray);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
 
-      &[aria-current="page"] {
-        color: var(--dark);
-        font-weight: 600;
-        background: var(--highlight);
-      }
-    }
-  }
+.custom-sidebar-nav a:hover,
+.custom-sidebar-nav a:focus-visible {
+  background: var(--lightgray);
+  color: var(--dark);
+}
 
-  &-nav-icon {
-    display: inline-flex;
-    flex-shrink: 0;
-    color: var(--secondary);
-  }
+.custom-sidebar-nav a[aria-current="page"] {
+  color: var(--dark);
+  font-weight: 600;
+  background: var(--highlight);
+}
+
+.custom-sidebar-nav-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--secondary);
 }
 
 /* ── Tablet Adjustments ─────────────────────────────── */
 @media (min-width: 800px) and (max-width: 1199px) {
-  .custom-sidebar {
-    &-title {
-      font-size: clamp(1rem, 1.1vw + 0.7rem, 1.25rem);
-    }
-    &-tagline {
-      font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.85rem);
-    }
+  .custom-sidebar-title {
+    font-size: clamp(1rem, 1.1vw + 0.7rem, 1.25rem);
+  }
+  .custom-sidebar-tagline {
+    font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.85rem);
   }
 }
 
@@ -153,10 +150,7 @@
 }
 
 /* ── RTL / Arabic Adjustments ───────────────────────── */
-[dir="rtl"] .custom-sidebar {
-  &-nav a {
-    flex-direction: row-reverse;
-    text-align: right;
-    // Ensures the icon sits on the right (start in RTL) and text flows left
-  }
+[dir="rtl"] .custom-sidebar-nav a {
+  flex-direction: row-reverse;
+  text-align: right;
 }
