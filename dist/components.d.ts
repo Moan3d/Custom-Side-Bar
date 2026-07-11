@@ -20,6 +20,7 @@ interface Options {
     navLinks: {
         text: string;
         href: string;
+        icon: "home" | "blog" | "categories" | "about";
     }[];
     socials: {
         platform: "github" | "linkedin" | "twitter";

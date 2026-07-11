@@ -1,131 +1,5 @@
 // src/styles.scss
-var styles_default = `/* === CUSTOM SIDEBAR === */
-
-.custom-sidebar {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: flex-start;
-  width: 100%;
-  padding-inline: 0;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--lightgray);
-  box-sizing: border-box;
-
-  &-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--secondary);
-    margin-bottom: 0.75rem;
-  }
-
-  &-title {
-    font-family: var(--headerFont);
-    color: var(--dark);
-    font-size: 1.25rem;
-    margin: 0 0 0.25rem;
-  }
-
-  &-tagline {
-    font-family: var(--bodyFont);
-    color: var(--gray);
-    font-size: 0.85rem;
-    line-height: 1.4;
-    margin: 0 0 1rem;
-  }
-
-  &-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    margin-bottom: 1rem;
-
-    a {
-      font-family: var(--bodyFont);
-      color: var(--darkgray);
-      font-size: 0.9rem;
-      text-decoration: none;
-      padding-block: 0.15rem;
-      transition: color 0.15s ease;
-
-      &:hover,
-      &:focus-visible {
-        color: var(--secondary);
-      }
-
-      &[aria-current="page"] {
-        color: var(--dark);
-        font-weight: 600;
-      }
-    }
-  }
-
-  &-socials {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-family: var(--codeFont);
-
-    a {
-      color: var(--gray);
-      display: inline-flex;
-      transition: color 0.15s ease;
-
-      &:hover,
-      &:focus-visible {
-        color: var(--tertiary);
-      }
-
-      svg {
-        width: 18px;
-        height: 18px;
-      }
-    }
-  }
-}
-
-/* Tablet: sidebar narrows to a fixed rail, so keep type from wrapping awkwardly */
-@media (min-width: 800px) and (max-width: 1199px) {
-  .custom-sidebar {
-    &-title {
-      font-size: clamp(1rem, 1.1vw + 0.7rem, 1.25rem);
-    }
-
-    &-tagline {
-      font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.85rem);
-    }
-  }
-}
-
-/* Mobile: sidebar becomes a horizontal sticky top bar in custom.scss,
-   the full vertical identity block doesn't fit \u2014 hide it and rely on
-   the existing mobile hamburger/explorer drawer instead. */
-@media (max-width: 799px) {
-  .custom-sidebar {
-    display: none;
-  }
-}
-
-/* RTL: flip alignment so avatar/title/nav/socials read from the right.
-   No margin-left/padding-right is used above, so logical properties
-   already do most of the work \u2014 this just fixes the flex alignment axis. */
-[dir="rtl"] .custom-sidebar {
-  align-items: flex-end;
-  text-align: right;
-
-  &-nav {
-    align-items: flex-end;
-  }
-
-  &-socials {
-    flex-direction: row-reverse;
-  }
-}
-`;
+var styles_default = '/* === CUSTOM SIDEBAR === */\n\n.custom-sidebar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-shrink: 0;\n  width: 100%;\n  text-align: center;\n  padding-bottom: 1.5rem;\n  margin-bottom: 1.5rem;\n  border-bottom: 1px solid var(--lightgray);\n  box-sizing: border-box;\n\n  &-avatar-wrap {\n    width: 80px;\n    height: 80px;\n    margin-bottom: 0.75rem;\n  }\n\n  &-avatar {\n    width: 80px;\n    height: 80px;\n    border-radius: 50%;\n    object-fit: cover;\n    border: 2px solid var(--secondary);\n  }\n\n  &-avatar-fallback {\n    width: 80px;\n    height: 80px;\n    border-radius: 50%;\n    border: 2px solid var(--secondary);\n    background: var(--lightgray);\n    color: var(--dark);\n    align-items: center;\n    justify-content: center;\n    font-family: var(--headerFont);\n    font-weight: 600;\n    font-size: 1.5rem;\n  }\n\n  &-title {\n    font-family: var(--headerFont);\n    color: var(--dark);\n    font-size: 1.25rem;\n    font-weight: 700;\n    margin: 0 0 0.35rem;\n  }\n\n  &-tagline {\n    font-family: var(--bodyFont);\n    color: var(--gray);\n    font-size: 0.85rem;\n    line-height: 1.4;\n    margin: 0 0 1rem;\n    max-width: 220px;\n  }\n\n  &-socials {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 0.5rem;\n    margin-bottom: 1.25rem;\n\n    a {\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      width: 32px;\n      height: 32px;\n      border-radius: 6px;\n      border: 1px solid var(--lightgray);\n      color: var(--darkgray);\n      transition: color 0.15s ease, border-color 0.15s ease;\n\n      &:hover,\n      &:focus-visible {\n        color: var(--secondary);\n        border-color: var(--secondary);\n      }\n    }\n  }\n\n  &-nav {\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    gap: 0.15rem;\n\n    a {\n      display: flex;\n      align-items: center;\n      gap: 0.75rem;\n      width: 100%;\n      padding: 0.5rem 0.25rem;\n      font-family: var(--bodyFont);\n      color: var(--darkgray);\n      font-size: 0.9rem;\n      text-decoration: none;\n      border-radius: 6px;\n      transition: background-color 0.15s ease, color 0.15s ease;\n\n      &:hover,\n      &:focus-visible {\n        background: var(--lightgray);\n        color: var(--dark);\n      }\n\n      &[aria-current="page"] {\n        color: var(--dark);\n        font-weight: 600;\n      }\n    }\n  }\n\n  &-nav-icon {\n    display: inline-flex;\n    flex-shrink: 0;\n    color: var(--secondary);\n  }\n}\n\n@media (min-width: 800px) and (max-width: 1199px) {\n  .custom-sidebar {\n    &-title {\n      font-size: clamp(1rem, 1.1vw + 0.7rem, 1.25rem);\n    }\n    &-tagline {\n      font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.85rem);\n    }\n  }\n}\n\n@media (max-width: 799px) {\n  .custom-sidebar {\n    display: none;\n  }\n}\n\n[dir="rtl"] .custom-sidebar {\n  &-nav a {\n    flex-direction: row-reverse;\n  }\n}';
 
 // node_modules/preact/dist/preact.mjs
 var n;
@@ -391,10 +265,10 @@ var defaultOptions = {
   tagline: "Security, Cloud, and the Art of the Hack.",
   avatarSrc: "/static/avatar.png",
   navLinks: [
-    { text: "Home", href: "/" },
-    { text: "Blog", href: "/blog" },
-    { text: "Categories", href: "/categories" },
-    { text: "About", href: "/about" }
+    { text: "Home", href: "/", icon: "home" },
+    { text: "Blog", href: "/blog", icon: "blog" },
+    { text: "Categories", href: "/categories", icon: "categories" },
+    { text: "About", href: "/about", icon: "about" }
   ],
   socials: [
     { platform: "github", href: "https://github.com/yourhandle" },
@@ -402,19 +276,43 @@ var defaultOptions = {
     { platform: "twitter", href: "https://twitter.com/yourhandle" }
   ]
 };
-var icons = {
-  github: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6.2 0c2.3-1.6 3.4-1.2 3.4-1.2.6 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.7 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>',
-  linkedin: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.4 20.4h-3.5v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.5V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.1 2.4 4.1 5.4v6.2ZM5.3 7.4a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM7 20.4H3.6V9H7v11.4ZM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4a1.8 1.8 0 0 0 1.8-1.8V1.8A1.8 1.8 0 0 0 22.2 0Z"/></svg>',
-  twitter: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.9 1.6h3.7l-8 9.2 9.5 12.6h-7.4l-5.8-7.6-6.6 7.6H.6l8.6-9.9L0 1.6h7.6l5.3 7 6-7Zm-1.3 19.5h2L6.5 3.8h-2l13.1 17.3Z"/></svg>'
+var socialIcons = {
+  github: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6.2 0c2.3-1.6 3.4-1.2 3.4-1.2.6 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.7 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.4 20.4h-3.5v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.5V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.1 2.4 4.1 5.4v6.2ZM5.3 7.4a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM7 20.4H3.6V9H7v11.4ZM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4a1.8 1.8 0 0 0 1.8-1.8V1.8A1.8 1.8 0 0 0 22.2 0Z"/></svg>',
+  twitter: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.9 1.6h3.7l-8 9.2 9.5 12.6h-7.4l-5.8-7.6-6.6 7.6H.6l8.6-9.9L0 1.6h7.6l5.3 7 6-7Zm-1.3 19.5h2L6.5 3.8h-2l13.1 17.3Z"/></svg>'
 };
+var navIcons = {
+  home: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>',
+  blog: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>',
+  categories: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 12 8-9 10 10-9 8z"/><circle cx="8.5" cy="8.5" r="1"/></svg>',
+  about: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>'
+};
+function initials(title) {
+  return title.split(/\s+/).map((w2) => w2[0]).join("").slice(0, 2).toUpperCase();
+}
 var CustomSidebar = (userOpts) => {
   const opts = { ...defaultOptions, ...userOpts };
   const Component = ({ displayClass }) => {
     return /* @__PURE__ */ u2("div", { class: `custom-sidebar ${displayClass ?? ""}`, children: [
-      /* @__PURE__ */ u2("img", { class: "custom-sidebar-avatar", src: opts.avatarSrc, alt: `${opts.siteTitle} avatar` }),
+      /* @__PURE__ */ u2("div", { class: "custom-sidebar-avatar-wrap", children: [
+        /* @__PURE__ */ u2(
+          "img",
+          {
+            class: "custom-sidebar-avatar",
+            src: opts.avatarSrc,
+            alt: `${opts.siteTitle} avatar`,
+            onError: (e2) => {
+              const img = e2.currentTarget;
+              img.style.display = "none";
+              const fallback = img.nextElementSibling;
+              if (fallback) fallback.style.display = "flex";
+            }
+          }
+        ),
+        /* @__PURE__ */ u2("div", { class: "custom-sidebar-avatar-fallback", style: "display:none", children: initials(opts.siteTitle) })
+      ] }),
       /* @__PURE__ */ u2("h1", { class: "custom-sidebar-title", children: opts.siteTitle }),
       /* @__PURE__ */ u2("p", { class: "custom-sidebar-tagline", children: opts.tagline }),
-      /* @__PURE__ */ u2("nav", { class: "custom-sidebar-nav", children: opts.navLinks.map((link) => /* @__PURE__ */ u2("a", { href: link.href, children: link.text })) }),
       /* @__PURE__ */ u2("div", { class: "custom-sidebar-socials", children: opts.socials.map((s2) => /* @__PURE__ */ u2(
         "a",
         {
@@ -422,9 +320,19 @@ var CustomSidebar = (userOpts) => {
           target: "_blank",
           rel: "noopener noreferrer",
           "aria-label": s2.platform,
-          dangerouslySetInnerHTML: { __html: icons[s2.platform] }
+          dangerouslySetInnerHTML: { __html: socialIcons[s2.platform] }
         }
-      )) })
+      )) }),
+      /* @__PURE__ */ u2("nav", { class: "custom-sidebar-nav", children: opts.navLinks.map((link) => /* @__PURE__ */ u2("a", { href: link.href, children: [
+        /* @__PURE__ */ u2(
+          "span",
+          {
+            class: "custom-sidebar-nav-icon",
+            dangerouslySetInnerHTML: { __html: navIcons[link.icon] }
+          }
+        ),
+        /* @__PURE__ */ u2("span", { children: link.text })
+      ] })) })
     ] });
   };
   Component.css = styles_default;
