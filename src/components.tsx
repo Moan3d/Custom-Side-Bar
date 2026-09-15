@@ -78,3 +78,5 @@ export const CustomSidebar: QuartzComponentConstructor<SidebarOptions> = (userOp
 
 export default CustomSidebar
 
+export { PostList } from "./post-list"
+export { TagCloud } from "./tag-cloud"

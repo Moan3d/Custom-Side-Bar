@@ -1,9 +1,12 @@
-import { QuartzComponent, QuartzComponentProps } from "./types"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import styles from "./styles.scss"
 
 /**
  * Renders a dated, listed index of all posts.
- * Only renders on the site root (content/index.md); returns null elsewhere.
+ * Only renders on the site root (content/index.md); renders nothing elsewhere.
+ *
+ * Exported as a QuartzComponentConstructor (not a plain component) so the
+ * Quartz v5 component loader instantiates it exactly like CustomSidebar.
  */
 
 interface FileEntry {
@@ -25,42 +28,43 @@ function dateOf(f: FileEntry): Date | undefined {
   return d ? new Date(d) : undefined
 }
 
-export const PostList: QuartzComponent = ({ allFiles, fileData, cfg }: QuartzComponentProps) => {
-  if (!fileData || fileData.slug !== "index") return <></>
+export const PostList: QuartzComponentConstructor = () => {
+  const Component: QuartzComponent = ({ allFiles, fileData, cfg }: QuartzComponentProps) => {
+    if (!fileData || fileData.slug !== "index") return <></>
 
-  const locale: string = cfg?.locale ?? "en-US"
-  const files: FileEntry[] = Array.isArray(allFiles) ? allFiles : []
+    const locale: string = cfg?.locale ?? "en-US"
+    const files: FileEntry[] = Array.isArray(allFiles) ? allFiles : []
 
-  const posts = files
-    .filter((f) => f.slug && !EXCLUDED_SLUGS.has(f.slug))
-    .sort((a, b) => {
-      const ta = dateOf(a)?.getTime() ?? 0
-      const tb = dateOf(b)?.getTime() ?? 0
-      return tb - ta
-    })
+    const posts = files
+      .filter((f) => f.slug && !EXCLUDED_SLUGS.has(f.slug))
+      .sort((a, b) => {
+        const ta = dateOf(a)?.getTime() ?? 0
+        const tb = dateOf(b)?.getTime() ?? 0
+        return tb - ta
+      })
 
-  const fmt = (d?: Date) =>
-    d
-      ? d.toLocaleDateString(locale, { year: "numeric", month: "short", day: "2-digit" })
-      : ""
+    const fmt = (d?: Date) =>
+      d ? d.toLocaleDateString(locale, { year: "numeric", month: "short", day: "2-digit" }) : ""
 
-  return (
-    <div class="post-list">
-      <h2 class="post-list-heading">Posts</h2>
-      <ul class="post-list-items">
-        {posts.map((p) => (
-          <li class="post-list-item">
-            <span class="post-list-date">{fmt(dateOf(p))}</span>
-            <a class="post-list-title" href={`/${p.slug}`}>
-              {titleOf(p)}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
+    return (
+      <div class="post-list">
+        <h2 class="post-list-heading">Posts</h2>
+        <ul class="post-list-items">
+          {posts.map((p) => (
+            <li class="post-list-item">
+              <span class="post-list-date">{fmt(dateOf(p))}</span>
+              <a class="post-list-title" href={`/${p.slug}`}>
+                {titleOf(p)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  Component.css = styles
+  return Component
 }
 
-PostList.css = styles
 export default PostList
-
