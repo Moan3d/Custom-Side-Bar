@@ -67,6 +67,7 @@
   max-width: 220px;
 }
 
+/* Social icon styles — kept for the About page (inline HTML there reuses these classes) */
 .custom-sidebar-socials {
   display: flex;
   align-items: center;
@@ -155,3 +156,123 @@
   flex-direction: row-reverse;
   text-align: right;
 }
+
+/* === POST LIST (landing page index) === */
+.post-list {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.post-list-heading {
+  font-family: var(--headerFont);
+  color: var(--dark);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.post-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-list-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.post-list-date {
+  flex-shrink: 0;
+  width: 6.5rem;
+  font-family: var(--bodyFont);
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.post-list-title {
+  font-family: var(--headerFont);
+  color: var(--dark);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.post-list-title:hover,
+.post-list-title:focus-visible {
+  color: var(--secondary);
+}
+
+@media (max-width: 600px) {
+  .post-list-item {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .post-list-date {
+    width: auto;
+  }
+}
+
+/* === TAG CLOUD (right sidebar discovery) === */
+.tag-cloud {
+  width: 100%;
+}
+
+.tag-cloud-heading {
+  font-family: var(--headerFont);
+  color: var(--dark);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.tag-cloud-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.tag-cloud-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  font-family: var(--bodyFont);
+  font-size: 0.8rem;
+  color: var(--darkgray);
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.tag-cloud-chip:hover,
+.tag-cloud-chip:focus-visible {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  background: var(--highlight);
+}
+
+.tag-cloud-count {
+  font-size: 0.7rem;
+  color: var(--gray);
+}
+
+/* === ABOUT PAGE SOCIALS (inline HTML in about.md reuses sidebar social styles) === */
+.about-socials {
+  justify-content: flex-start;
+  margin: 0.5rem 0 2rem;
+}
+
+[dir="rtl"] .about-socials {
+  justify-content: flex-end;
+}
+
