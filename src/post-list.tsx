@@ -15,8 +15,8 @@ interface FileEntry {
   dates?: { created?: Date; modified?: Date }
 }
 
-// Slugs that should never appear in the post listing
-const EXCLUDED_SLUGS = new Set(["index", "404", "about"])
+// Pages that should never appear in the post listing
+const EXCLUDED_SLUGS = new Set(["index", "404", "about", "tags"])
 
 function titleOf(f: FileEntry): string {
   if (f.frontmatter?.title) return f.frontmatter.title
@@ -34,9 +34,20 @@ export const PostList: QuartzComponentConstructor = () => {
 
     const locale: string = cfg?.locale ?? "en-US"
     const files: FileEntry[] = Array.isArray(allFiles) ? allFiles : []
+    const slugs = new Set(files.map((f) => f.slug).filter(Boolean) as string[])
 
     const posts = files
-      .filter((f) => f.slug && !EXCLUDED_SLUGS.has(f.slug))
+      .filter((f) => f.slug)
+      // never list utility pages
+      .filter((f) => !EXCLUDED_SLUGS.has(f.slug!))
+      // never list Excalidraw sidecar files (belt-and-braces; ignorePatterns
+      // in quartz.config.yaml excludes them from the build entirely)
+      .filter((f) => !f.slug!.toLowerCase().includes("excalidraw"))
+      // never list folder index pages: a folder's slug is a path prefix of
+      // the slugs of the real posts inside it (e.g. "blogs" vs "blogs/aws-...")
+      .filter(
+        (f) => ![...slugs].some((other) => other !== f.slug && other.startsWith(f.slug! + "/")),
+      )
       .sort((a, b) => {
         const ta = dateOf(a)?.getTime() ?? 0
         const tb = dateOf(b)?.getTime() ?? 0

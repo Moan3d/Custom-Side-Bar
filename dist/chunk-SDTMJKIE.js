@@ -260,7 +260,7 @@ function u2(e2, t2, n2, o2, i2, u3) {
 }
 
 // src/post-list.tsx
-var EXCLUDED_SLUGS = /* @__PURE__ */ new Set(["index", "404", "about"]);
+var EXCLUDED_SLUGS = /* @__PURE__ */ new Set(["index", "404", "about", "tags"]);
 function titleOf(f3) {
   if (f3.frontmatter?.title) return f3.frontmatter.title;
   return f3.slug?.split("/").filter(Boolean).pop() ?? "Untitled";
@@ -274,7 +274,10 @@ var PostList = () => {
     if (!fileData || fileData.slug !== "index") return /* @__PURE__ */ u2(S, {});
     const locale = cfg?.locale ?? "en-US";
     const files = Array.isArray(allFiles) ? allFiles : [];
-    const posts = files.filter((f3) => f3.slug && !EXCLUDED_SLUGS.has(f3.slug)).sort((a2, b2) => {
+    const slugs = new Set(files.map((f3) => f3.slug).filter(Boolean));
+    const posts = files.filter((f3) => f3.slug).filter((f3) => !EXCLUDED_SLUGS.has(f3.slug)).filter((f3) => !f3.slug.toLowerCase().includes("excalidraw")).filter(
+      (f3) => ![...slugs].some((other) => other !== f3.slug && other.startsWith(f3.slug + "/"))
+    ).sort((a2, b2) => {
       const ta = dateOf(a2)?.getTime() ?? 0;
       const tb = dateOf(b2)?.getTime() ?? 0;
       return tb - ta;
