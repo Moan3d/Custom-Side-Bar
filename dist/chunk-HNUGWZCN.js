@@ -275,9 +275,9 @@ var PostList = () => {
     const locale = cfg?.locale ?? "en-US";
     const files = Array.isArray(allFiles) ? allFiles : [];
     const slugs = new Set(files.map((f3) => f3.slug).filter(Boolean));
-    const posts = files.filter((f3) => f3.slug).filter((f3) => !EXCLUDED_SLUGS.has(f3.slug)).filter((f3) => !f3.slug.toLowerCase().includes("excalidraw")).filter(
+    const posts = files.filter((f3) => f3.slug).filter((f3) => !EXCLUDED_SLUGS.has(f3.slug)).filter((f3) => !f3.slug.startsWith("tags/")).filter((f3) => !f3.slug.toLowerCase().includes("excalidraw")).filter(
       (f3) => ![...slugs].some((other) => other !== f3.slug && other.startsWith(f3.slug + "/"))
-    ).sort((a2, b2) => {
+    ).filter((f3) => dateOf(f3)).sort((a2, b2) => {
       const ta = dateOf(a2)?.getTime() ?? 0;
       const tb = dateOf(b2)?.getTime() ?? 0;
       return tb - ta;

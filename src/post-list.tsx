@@ -40,14 +40,19 @@ export const PostList: QuartzComponentConstructor = () => {
       .filter((f) => f.slug)
       // never list utility pages
       .filter((f) => !EXCLUDED_SLUGS.has(f.slug!))
-      // never list Excalidraw sidecar files (belt-and-braces; ignorePatterns
-      // in quartz.config.yaml excludes them from the build entirely)
+      // never list tag listing pages (tags/<name>) — only posts themselves
+      .filter((f) => !f.slug!.startsWith("tags/"))
+      // never list Excalidraw sidecar files
       .filter((f) => !f.slug!.toLowerCase().includes("excalidraw"))
       // never list folder index pages: a folder's slug is a path prefix of
-      // the slugs of the real posts inside it (e.g. "blogs" vs "blogs/aws-...")
+      // the real posts inside it (e.g. "blogs" vs "blogs/aws-...")
       .filter(
         (f) => ![...slugs].some((other) => other !== f.slug && other.startsWith(f.slug! + "/")),
       )
+      // synthetic pages (folder/tag indexes) carry no dates; every real post
+      // has one via created-modified-date (filesystem fallback) — this is the
+      // catch-all that removes anything the rules above miss
+      .filter((f) => dateOf(f))
       .sort((a, b) => {
         const ta = dateOf(a)?.getTime() ?? 0
         const tb = dateOf(b)?.getTime() ?? 0
