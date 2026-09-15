@@ -1,5 +1,5 @@
 // src/styles.scss
-var styles_default = '/* === CUSTOM SIDEBAR (NileOverflow / Desolation Theme) === */\n\n.custom-sidebar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-shrink: 0;\n  width: 100%;\n  text-align: center;\n  padding-bottom: 1.5rem;\n  margin-bottom: 1.5rem;\n  border-bottom: 1px solid var(--lightgray);\n  box-sizing: border-box;\n  order: -1; /* MAGIC FIX: Forces sidebar to the top, ignoring DOM order */\n}\n\n.custom-sidebar-avatar-wrap {\n  width: 80px;\n  height: 80px;\n  margin-bottom: 0.75rem;\n}\n\n.custom-sidebar-avatar {\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n  object-fit: cover;\n  border: 2px solid var(--secondary);\n  transition: border-color 0.2s ease, transform 0.2s ease;\n}\n\n.custom-sidebar-avatar:hover {\n  border-color: var(--tertiary);\n  transform: scale(1.05);\n}\n\n.custom-sidebar-avatar-fallback {\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n  border: 2px solid var(--secondary);\n  background: var(--lightgray);\n  color: var(--dark);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-family: var(--headerFont);\n  font-weight: 600;\n  font-size: 1.5rem;\n}\n\n.custom-sidebar-title {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1.25rem;\n  font-weight: 700;\n  margin: 0 0 0.35rem;\n  line-height: 1.2;\n}\n\n.custom-sidebar-tagline {\n  font-family: var(--bodyFont);\n  color: var(--gray);\n  font-size: 0.85rem;\n  line-height: 1.4;\n  margin: 0 0 1rem;\n  max-width: 220px;\n}\n\n/* Social icon styles \u2014 kept for the About page (inline HTML there reuses these classes) */\n.custom-sidebar-socials {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.5rem;\n  margin-bottom: 1.25rem;\n}\n\n.custom-sidebar-socials a {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 32px;\n  height: 32px;\n  border-radius: 6px;\n  border: 1px solid var(--lightgray);\n  color: var(--darkgray);\n  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;\n}\n\n.custom-sidebar-socials a:hover,\n.custom-sidebar-socials a:focus-visible {\n  color: var(--secondary);\n  border-color: var(--secondary);\n  background: var(--highlight);\n}\n\n.custom-sidebar-nav {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  gap: 0.15rem;\n}\n\n.custom-sidebar-nav a {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.5rem 0.75rem;\n  font-family: var(--bodyFont);\n  color: var(--darkgray);\n  font-size: 0.9rem;\n  text-decoration: none;\n  border-radius: 6px;\n  transition: background-color 0.15s ease, color 0.15s ease;\n}\n\n.custom-sidebar-nav a:hover,\n.custom-sidebar-nav a:focus-visible {\n  background: var(--lightgray);\n  color: var(--dark);\n}\n\n.custom-sidebar-nav a[aria-current="page"] {\n  color: var(--dark);\n  font-weight: 600;\n  background: var(--highlight);\n}\n\n.custom-sidebar-nav-icon {\n  display: inline-flex;\n  flex-shrink: 0;\n  color: var(--secondary);\n}\n\n/* \u2500\u2500 Tablet Adjustments \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n@media (min-width: 800px) and (max-width: 1199px) {\n  .custom-sidebar-title {\n    font-size: clamp(1rem, 1.1vw + 0.7rem, 1.25rem);\n  }\n  .custom-sidebar-tagline {\n    font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.85rem);\n  }\n}\n\n/* \u2500\u2500 Mobile: Hide to preserve sticky top-bar \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n@media (max-width: 799px) {\n  .custom-sidebar {\n    display: none;\n  }\n}\n\n/* \u2500\u2500 RTL / Arabic Adjustments \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n[dir="rtl"] .custom-sidebar-nav a {\n  flex-direction: row-reverse;\n  text-align: right;\n}\n\n/* === POST LIST (landing page index) === */\n.post-list {\n  width: 100%;\n  margin-top: 2rem;\n}\n\n.post-list-heading {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1.25rem;\n  font-weight: 700;\n  margin: 0 0 0.75rem;\n}\n\n.post-list-items {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n}\n\n.post-list-item {\n  display: flex;\n  align-items: baseline;\n  gap: 1rem;\n  padding: 0.5rem 0;\n  border-bottom: 1px solid var(--lightgray);\n}\n\n.post-list-date {\n  flex-shrink: 0;\n  width: 6.5rem;\n  font-family: var(--bodyFont);\n  font-size: 0.8rem;\n  color: var(--gray);\n}\n\n.post-list-title {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1rem;\n  text-decoration: none;\n  transition: color 0.15s ease;\n}\n\n.post-list-title:hover,\n.post-list-title:focus-visible {\n  color: var(--secondary);\n}\n\n@media (max-width: 600px) {\n  .post-list-item {\n    flex-direction: column;\n    gap: 0.15rem;\n  }\n  .post-list-date {\n    width: auto;\n  }\n}\n\n/* === TAG CLOUD (right sidebar discovery) === */\n.tag-cloud {\n  width: 100%;\n}\n\n.tag-cloud-heading {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1rem;\n  font-weight: 700;\n  margin: 0 0 0.5rem;\n}\n\n.tag-cloud-list {\n  list-style: none;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.4rem;\n  margin: 0;\n  padding: 0;\n}\n\n.tag-cloud-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 0.3rem;\n  padding: 0.25rem 0.6rem;\n  border: 1px solid var(--lightgray);\n  border-radius: 6px;\n  font-family: var(--bodyFont);\n  font-size: 0.8rem;\n  color: var(--darkgray);\n  text-decoration: none;\n  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;\n}\n\n.tag-cloud-chip:hover,\n.tag-cloud-chip:focus-visible {\n  color: var(--secondary);\n  border-color: var(--secondary);\n  background: var(--highlight);\n}\n\n.tag-cloud-count {\n  font-size: 0.7rem;\n  color: var(--gray);\n}\n\n/* === ABOUT PAGE SOCIALS (inline HTML in about.md reuses sidebar social styles) === */\n.about-socials {\n  justify-content: flex-start;\n  margin: 0.5rem 0 2rem;\n}\n\n[dir="rtl"] .about-socials {\n  justify-content: flex-end;\n}\n\n';
+var styles_default = '/* === CUSTOM SIDEBAR (NileOverflow / Desolation Theme) === */\n\n.custom-sidebar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-shrink: 0;\n  width: 100%;\n  text-align: center;\n  padding-bottom: 1.5rem;\n  margin-bottom: 1.5rem;\n  border-bottom: 1px solid var(--lightgray);\n  box-sizing: border-box;\n  order: -1; /* MAGIC FIX: Forces sidebar to the top, ignoring DOM order */\n}\n\n.custom-sidebar-avatar-wrap {\n  width: 80px;\n  height: 80px;\n  margin-bottom: 0.75rem;\n}\n\n.custom-sidebar-avatar {\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n  object-fit: cover;\n  border: 2px solid var(--secondary);\n  transition: border-color 0.2s ease, transform 0.2s ease;\n}\n\n.custom-sidebar-avatar:hover {\n  border-color: var(--tertiary);\n  transform: scale(1.05);\n}\n\n.custom-sidebar-avatar-fallback {\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n  border: 2px solid var(--secondary);\n  background: var(--lightgray);\n  color: var(--dark);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-family: var(--headerFont);\n  font-weight: 600;\n  font-size: 1.5rem;\n}\n\n.custom-sidebar-title {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1.25rem;\n  font-weight: 700;\n  margin: 0 0 0.35rem;\n  line-height: 1.2;\n}\n\n.custom-sidebar-tagline {\n  font-family: var(--bodyFont);\n  color: var(--gray);\n  font-size: 0.85rem;\n  line-height: 1.4;\n  margin: 0 0 1rem;\n  max-width: 220px;\n}\n\n/* Social icon styles \u2014 kept for the About page (inline HTML there reuses these classes) */\n.custom-sidebar-socials {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.5rem;\n  margin-bottom: 1.25rem;\n}\n\n.custom-sidebar-socials a {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 32px;\n  height: 32px;\n  border-radius: 6px;\n  border: 1px solid var(--lightgray);\n  color: var(--darkgray);\n  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;\n}\n\n.custom-sidebar-socials a:hover,\n.custom-sidebar-socials a:focus-visible {\n  color: var(--secondary);\n  border-color: var(--secondary);\n  background: var(--highlight);\n}\n\n.custom-sidebar-nav {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  gap: 0.15rem;\n}\n\n.custom-sidebar-nav a {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.5rem 0.75rem;\n  font-family: var(--bodyFont);\n  color: var(--darkgray);\n  font-size: 0.9rem;\n  text-decoration: none;\n  border-radius: 6px;\n  transition: background-color 0.15s ease, color 0.15s ease;\n}\n\n.custom-sidebar-nav a:hover,\n.custom-sidebar-nav a:focus-visible {\n  background: var(--lightgray);\n  color: var(--dark);\n}\n\n.custom-sidebar-nav a[aria-current="page"] {\n  color: var(--dark);\n  font-weight: 600;\n  background: var(--highlight);\n}\n\n.custom-sidebar-nav-icon {\n  display: inline-flex;\n  flex-shrink: 0;\n  color: var(--secondary);\n}\n\n/* \u2500\u2500 Tablet Adjustments \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n@media (min-width: 800px) and (max-width: 1199px) {\n  .custom-sidebar-title {\n    font-size: clamp(1rem, 1.1vw + 0.7rem, 1.25rem);\n  }\n  .custom-sidebar-tagline {\n    font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.85rem);\n  }\n}\n\n/* \u2500\u2500 Mobile: Hide to preserve sticky top-bar \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n@media (max-width: 799px) {\n  .custom-sidebar {\n    display: none;\n  }\n}\n\n/* \u2500\u2500 RTL / Arabic Adjustments \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n[dir="rtl"] .custom-sidebar-nav a {\n  flex-direction: row-reverse;\n  text-align: right;\n}\n\n/* === POST LIST (landing page index) === */\n.post-list {\n  width: 100%;\n  margin-top: 2rem;\n}\n\n.post-list-heading {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1.25rem;\n  font-weight: 700;\n  margin: 0 0 0.75rem;\n}\n\n.post-list-items {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n}\n\n.post-list-item {\n  display: flex;\n  align-items: baseline;\n  gap: 1rem;\n  padding: 0.5rem 0;\n  border-bottom: 1px solid var(--lightgray);\n}\n\n.post-list-date {\n  flex-shrink: 0;\n  width: 6.5rem;\n  font-family: var(--bodyFont);\n  font-size: 0.8rem;\n  color: var(--gray);\n}\n\n.post-list-title {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1rem;\n  text-decoration: none;\n  transition: color 0.15s ease;\n}\n\n.post-list-title:hover,\n.post-list-title:focus-visible {\n  color: var(--secondary);\n}\n\n@media (max-width: 600px) {\n  .post-list-item {\n    flex-direction: column;\n    gap: 0.15rem;\n  }\n  .post-list-date {\n    width: auto;\n  }\n}\n\n/* === TAG CLOUD (right sidebar discovery) === */\n.tag-cloud {\n  width: 100%;\n}\n\n.tag-cloud-heading {\n  font-family: var(--headerFont);\n  color: var(--dark);\n  font-size: 1rem;\n  font-weight: 700;\n  margin: 0 0 0.5rem;\n}\n\n.tag-cloud-list {\n  list-style: none;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.4rem;\n  margin: 0;\n  padding: 0;\n}\n\n.tag-cloud-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 0.3rem;\n  padding: 0.25rem 0.6rem;\n  border: 1px solid var(--lightgray);\n  border-radius: 6px;\n  font-family: var(--bodyFont);\n  font-size: 0.8rem;\n  color: var(--darkgray);\n  text-decoration: none;\n  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;\n}\n\n.tag-cloud-chip:hover,\n.tag-cloud-chip:focus-visible {\n  color: var(--secondary);\n  border-color: var(--secondary);\n  background: var(--highlight);\n}\n\n.tag-cloud-count {\n  font-size: 0.7rem;\n  color: var(--gray);\n}\n\n/* === ABOUT PAGE SOCIALS (inline HTML in about.md reuses sidebar social styles) === */\n.about-socials {\n  justify-content: flex-start;\n  margin: 0.5rem 0 2rem;\n}\n\n[dir="rtl"] .about-socials {\n  justify-content: flex-end;\n}\n';
 
 // node_modules/preact/dist/preact.mjs
 var n;
@@ -259,6 +259,69 @@ function u2(e2, t2, n2, o2, i2, u3) {
   return l.vnode && l.vnode(l2), l2;
 }
 
+// src/post-list.tsx
+var EXCLUDED_SLUGS = /* @__PURE__ */ new Set(["index", "404", "about"]);
+function titleOf(f3) {
+  if (f3.frontmatter?.title) return f3.frontmatter.title;
+  return f3.slug?.split("/").filter(Boolean).pop() ?? "Untitled";
+}
+function dateOf(f3) {
+  const d2 = f3.dates?.modified ?? f3.dates?.created;
+  return d2 ? new Date(d2) : void 0;
+}
+var PostList = () => {
+  const Component = ({ allFiles, fileData, cfg }) => {
+    if (!fileData || fileData.slug !== "index") return /* @__PURE__ */ u2(S, {});
+    const locale = cfg?.locale ?? "en-US";
+    const files = Array.isArray(allFiles) ? allFiles : [];
+    const posts = files.filter((f3) => f3.slug && !EXCLUDED_SLUGS.has(f3.slug)).sort((a2, b2) => {
+      const ta = dateOf(a2)?.getTime() ?? 0;
+      const tb = dateOf(b2)?.getTime() ?? 0;
+      return tb - ta;
+    });
+    const fmt = (d2) => d2 ? d2.toLocaleDateString(locale, { year: "numeric", month: "short", day: "2-digit" }) : "";
+    return /* @__PURE__ */ u2("div", { class: "post-list", children: [
+      /* @__PURE__ */ u2("h2", { class: "post-list-heading", children: "Posts" }),
+      /* @__PURE__ */ u2("ul", { class: "post-list-items", children: posts.map((p2) => /* @__PURE__ */ u2("li", { class: "post-list-item", children: [
+        /* @__PURE__ */ u2("span", { class: "post-list-date", children: fmt(dateOf(p2)) }),
+        /* @__PURE__ */ u2("a", { class: "post-list-title", href: `/${p2.slug}`, children: titleOf(p2) })
+      ] })) })
+    ] });
+  };
+  Component.css = styles_default;
+  return Component;
+};
+
+// src/tag-cloud.tsx
+var MAX_TAGS = 12;
+var TagCloud = () => {
+  const Component = ({ allFiles, fileData }) => {
+    if (!fileData || fileData.slug !== "index") return /* @__PURE__ */ u2(S, {});
+    const files = Array.isArray(allFiles) ? allFiles : [];
+    const counts = /* @__PURE__ */ new Map();
+    for (const f3 of files) {
+      const raw = f3?.frontmatter?.tags;
+      const tags = Array.isArray(raw) ? raw : typeof raw === "string" ? raw.split(/,\s*/) : [];
+      for (const t2 of tags) {
+        const tag = String(t2).trim();
+        if (tag) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+      }
+    }
+    if (counts.size === 0) return /* @__PURE__ */ u2(S, {});
+    const sorted = [...counts.entries()].map(([tag, count]) => ({ tag, count })).sort((a2, b2) => b2.count - a2.count || a2.tag.localeCompare(b2.tag)).slice(0, MAX_TAGS);
+    return /* @__PURE__ */ u2("div", { class: "tag-cloud", children: [
+      /* @__PURE__ */ u2("h3", { class: "tag-cloud-heading", children: "Discover by tag" }),
+      /* @__PURE__ */ u2("ul", { class: "tag-cloud-list", children: sorted.map(({ tag, count }) => /* @__PURE__ */ u2("li", { children: /* @__PURE__ */ u2("a", { class: "tag-cloud-chip", href: `/tags/${encodeURIComponent(tag)}`, children: [
+        "#",
+        tag,
+        /* @__PURE__ */ u2("span", { class: "tag-cloud-count", children: count })
+      ] }) })) })
+    ] });
+  };
+  Component.css = styles_default;
+  return Component;
+};
+
 // src/components.tsx
 var defaultOptions = {
   siteTitle: "NileOverflow",
@@ -316,9 +379,8 @@ var CustomSidebar = (userOpts) => {
 var components_default = CustomSidebar;
 
 export {
-  styles_default,
-  S,
-  u2 as u,
+  PostList,
+  TagCloud,
   CustomSidebar,
   components_default
 };
