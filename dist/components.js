@@ -3,7 +3,7 @@ import {
   PostList,
   TagCloud,
   components_default
-} from "./chunk-SDTMJKIE.js";
+} from "./chunk-VZQ7HT4G.js";
 export {
   CustomSidebar,
   PostList,

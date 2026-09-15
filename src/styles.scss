@@ -275,3 +275,7 @@
 [dir="rtl"] .about-socials {
   justify-content: flex-end;
 }
+/* Hide the "Welcome"-style H1 only on the landing page (post-list exists only there) */
+body:has(.post-list) .article-title {
+  display: none;
+}
