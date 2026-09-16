@@ -17,11 +17,14 @@
     "preact": "^10.19.0"
   },
   "quartz": {
-    "category": ["component"],
+    "category": [
+      "component"
+    ],
     "components": {
       "CustomSidebar": {},
       "PostList": {},
-      "TagCloud": {}
+      "TagCloud": {},
+      "AuthorLine": {}
     },
     "defaultOptions": {
       "siteTitle": "NileOverflow",
@@ -30,3 +33,4 @@
     }
   }
 }
+

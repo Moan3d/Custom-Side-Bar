@@ -275,7 +275,28 @@
 [dir="rtl"] .about-socials {
   justify-content: flex-end;
 }
-/* Hide the "Welcome"-style H1 only on the landing page (post-list exists only there) */
-body:has(.post-list) .article-title {
-  display: none;
+
+/* === AUTHOR BYLINE (posts) === */
+.author-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-family: var(--bodyFont);
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin: -0.25rem 0 1.25rem;
 }
+
+.author-name {
+  color: var(--darkgray);
+  font-weight: 600;
+}
+
+.author-sep {
+  color: var(--gray);
+}
+
+.author-date {
+  color: var(--gray);
+}
+

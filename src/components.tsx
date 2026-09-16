@@ -80,3 +80,5 @@ export default CustomSidebar
 
 export { PostList } from "./post-list"
 export { TagCloud } from "./tag-cloud"
+export { AuthorLine } from "./author-line"
+
